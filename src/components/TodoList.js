@@ -30,6 +30,14 @@ class TodoList extends React.Component {
     });
   };
 
+  enterToAdd = e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      console.log(e.target.value);
+      this.addListItem();
+    }
+  };
+
   render() {
     const { list } = this.state;
 
@@ -41,6 +49,7 @@ class TodoList extends React.Component {
             <TextField
               id="filled-basic"
               onChange={this.changeInput}
+              onKeyUp={this.enterToAdd}
               className="inputForm"
             />
           </Grid>
