@@ -1,5 +1,13 @@
 import React from "react";
 
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Grid from "@material-ui/core/Grid";
+
+import "../styles/TodoList.css";
+
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
@@ -23,18 +31,43 @@ class TodoList extends React.Component {
   };
 
   render() {
-    const { list, input } = this.state;
+    const { list } = this.state;
 
     return (
-      <div className="App">
-        <input type="text" onChange={this.changeInput} />
-        <button onClick={this.addListItem}>Add</button>
-        {/* use ul li to create list item */}
-        <ul>
-          {list.map(item => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+      <div>
+        {/* <div className="Todolist"> */}
+        <Grid container spacing={0}>
+          <Grid item xs={6}>
+            <TextField
+              id="filled-basic"
+              onChange={this.changeInput}
+              className="inputForm"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.addListItem}
+            >
+              Add
+            </Button>
+          </Grid>
+
+          {/* </div> */}
+          {/* use ul li to create list item */}
+
+          <List className="ListItem">
+            {list.map(item => (
+              <>
+                <ListItem className="ListItem" key={item}>
+                  <span className="item"> {item}</span>
+                  <Button className="DeleteButton">Delete</Button>
+                </ListItem>
+              </>
+            ))}
+          </List>
+        </Grid>
       </div>
     );
   }

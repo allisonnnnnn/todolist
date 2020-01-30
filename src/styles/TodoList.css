@@ -1,0 +1,12 @@
+/* .Todolist {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 4em;
+} */
+.inputForm {
+  margin-right: 10px;
+}
+
+.item {
+  margin-right: 100px;
+}
